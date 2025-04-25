@@ -30,6 +30,7 @@ from .common import (
     conv_block,
     BN_MOMENTUM,
     SELayer,
+    # cbam update
     CBAMBlock
 )
 
@@ -171,6 +172,7 @@ class EfficientNet(nn.Module):
         self._global_params = global_params
         self._blocks_args = blocks_args
 
+        # cbam update
         # CBAMs for F3 (reduction_4), F4 (reduction_3), F5 (reduction_2)
         self.cbam_f3 = CBAMBlock(112)  # for reduction_4
         self.cbam_f4 = CBAMBlock(40)   # for reduction_3
@@ -498,6 +500,7 @@ class EfficientNet(nn.Module):
         # x3 = endpoints['reduction_4']
         # x4 = endpoints['reduction_3']
         # x5 = endpoints['reduction_2']
+        # cbam update 
         x1 = endpoints['reduction_6']
         x2 = endpoints['reduction_5']
         x3 = self.cbam_f3(endpoints['reduction_4'])  # F3

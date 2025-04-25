@@ -74,6 +74,7 @@ class SELayer(nn.Module):
         y = self.fc(y).view(b, c, 1, 1)
         return x * y.expand_as(x)
 
+# cbam update 
 
 # adding cbam classes 
 
